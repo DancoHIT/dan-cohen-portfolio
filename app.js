@@ -1,4 +1,19 @@
 const icon = name => `<svg aria-hidden="true"><use href="#${name}"/></svg>`;
+const backgroundVideo=document.querySelector('#background-video');
+const backgroundToggle=document.querySelector('#background-toggle');
+if(backgroundVideo&&backgroundToggle){
+ const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
+ let backgroundStopped=false;
+ const updateBackgroundControl=()=>{backgroundToggle.hidden=reducedMotion.matches;backgroundToggle.textContent=backgroundVideo.paused?'הפעלת הרקע':'עצירת הרקע';backgroundToggle.setAttribute('aria-pressed',String(backgroundVideo.paused));};
+ const syncBackground=()=>{backgroundVideo.muted=true;if(reducedMotion.matches||backgroundStopped||document.hidden)backgroundVideo.pause();else backgroundVideo.play().catch(()=>updateBackgroundControl());updateBackgroundControl();};
+ backgroundToggle.addEventListener('click',()=>{backgroundStopped=!backgroundVideo.paused;syncBackground();});
+ backgroundVideo.addEventListener('play',updateBackgroundControl);
+ backgroundVideo.addEventListener('pause',updateBackgroundControl);
+ backgroundVideo.addEventListener('error',()=>{backgroundToggle.hidden=true;});
+ reducedMotion.addEventListener('change',syncBackground);
+ document.addEventListener('visibilitychange',syncBackground);
+ syncBackground();
+}
 const link = (url,text,type='secondary') => `<a class="button ${type}" href="${url}" target="_blank" rel="noopener">${text}${icon('external')}</a>`;
 const projects = {
  postman:{
