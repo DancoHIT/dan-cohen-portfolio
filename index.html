@@ -12,7 +12,6 @@
 </head>
 <body>
 <div class="site-background" aria-hidden="true"><video id="background-video" autoplay muted loop playsinline preload="metadata" poster="assets/background-poster.jpg" tabindex="-1"><source src="assets/background-loop.mp4" type="video/mp4"></video></div>
-<button class="background-toggle" id="background-toggle" type="button" aria-pressed="false" hidden>עצירת הרקע</button>
 <a class="skip" href="#main">דילוג לתוכן</a>
 <svg class="svg-library" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs>
   <symbol id="arrow" viewBox="0 0 24 24"><path d="M19 12H5m6-6-6 6 6 6"/></symbol>
@@ -30,7 +29,7 @@
   <div class="nav wrap">
     <a class="brand" href="#home" aria-label="דן כהן — לעמוד הראשי"><span class="brand-mark" aria-hidden="true">dc<span>.</span></span><span dir="ltr">DAN COHEN</span></a>
     <nav aria-label="ניווט ראשי"><a href="#projects">העבודות שלי</a><a href="#expertise">כישורים וכלים</a><a href="#home">עליי</a></nav>
-    <a class="nav-contact" href="#contact">יצירת קשר <span aria-hidden="true">↗</span></a>
+    <div class="nav-actions"><a class="nav-contact" href="#contact">יצירת קשר <span aria-hidden="true">↗</span></a><button class="background-toggle" id="background-toggle" type="button" aria-pressed="false" hidden>עצירת הרקע</button></div>
   </div>
 </header>
 <main id="main">
